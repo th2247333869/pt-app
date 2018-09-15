@@ -1,7 +1,7 @@
 <template>
   <div id="Home">
-  <!--  <el-row>
-      &lt;!&ndash;标题头&ndash;&gt;
+    <!--<el-row>
+      &lt;!&ndash;&lt;!&ndash;标题头&ndash;&gt;&ndash;&gt;
       <el-col :span="24">
         <div class=" bg-purple-dark head_top">
           <div class="grid-left">
