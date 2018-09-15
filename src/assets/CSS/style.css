@@ -1,0 +1,14 @@
+*{
+  margin:0px;
+  padding: 0px;
+  font-size: 15px;
+  font-family:"Times New Roman",Georgia,Serif;
+  list-style: none;
+}
+
+button:hover{
+  cursor: pointer;
+}
+img:hover{cursor: pointer;}
+
+
