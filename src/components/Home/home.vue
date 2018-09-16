@@ -26,7 +26,7 @@
           <div class="grid-extension-menu">
             <ul class="menu">
               <li><button>主页</button></li>
-              <li><button>我的信息</button></li>
+              <li><button @click="redirectPage">我的信息</button></li>
               <li><button>工作空间</button></li>
               <li><button>工作空间</button></li>
               <li><button>工作空间</button></li>
@@ -71,9 +71,26 @@
   import Schedule from './Schedule'
 
   export  default {
+    //变量@
+    data: function(){
+      return {
+        //跳转路由@可查询
+        PageUrl:{
+          PersonalDetailsUrl:'PerspnalDetails',
+        }
+      }
+    },
     //组件引用@放置主页面的初始化方法内有过多处理
     components : {
       Carousel,LeaderBoard,Schedule
+    },
+    methods:{
+
+      redirectPage:function () {
+        alert();
+        let _this = this;
+        _this.$router.push({name:_this.PageUrl.PersonalDetailsUrl});
+      }
     }
   }
 
