@@ -2,13 +2,16 @@
   margin:0px;
   padding: 0px;
   font-size: 15px;
-  font-family:"Times New Roman",Georgia,Serif;
+  font-family: 'Open Sans', sans-serif;
   list-style: none;
 }
-
+body{
+  height: 100%;
+}
 button:hover{
   cursor: pointer;
 }
 img:hover{cursor: pointer;}
+
 
 
