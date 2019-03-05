@@ -1,54 +1,9 @@
 <template>
   <div id="UserSeting">
     <div class="head">
-        <div class="userp">
-          <div class="userP1">
-          </div>
-          <p><h2>{{user.name}}</h2></p>
-          <p><h3>{{user.position}}</h3></p>
-        </div>
-        <div class="setting" @click="silder()"></div>
-        <div class="ling">
-          <div class="red"><span>5</span></div>
-        </div>
-      </div>
-    <div class="center">
-        <div class="ts">
-          <div class="tsmin">
-            <div class="tst t1">
-              <p><h2>Jonny Lulu</h2></p>
-              <p><h3>China</h3></p>
-            </div>
-            <div class="tst t2">
-              <p><h2>Jonny Lulu</h2></p>
-              <p><h3>China</h3></p>
-            </div>
-            <div class="tst t3">
-              <p><h2>Jonny Lulu</h2></p>
-              <p><h3>China</h3></p>
-            </div>
-          </div>
-        </div>
-        <div class="mb" >
-          <div class="mbm">
-            <template v-for="item in modelItems">
-              <div class="mbmm">
-                <img src="./../../../static/image/life.png">
-                <h4><a>{{item[1]}}</a></h4>
-              </div>
-            </template>
-          </div>
-        </div>
-      </div>
 
-    <div class="tab" :style="tabStyle">
-      <template v-for="item in settingItems">
-        <div class="tabMenu">
-          {{item.text}}
-        </div>
-      </template>
     </div>
-    </div>
+  </div>
 </template>
 <script>
 
@@ -73,9 +28,9 @@
     created(){
       let _this = this;
       //获取初始用户信息
-      _this.user = _this.$route.query.userinformation;
+      /*_this.user = _this.$route.query.userinformation;
       console.log( _this.$route.query.models);
-      _this.modelItems = _this.$route.query.models;
+      _this.modelItems = _this.$route.query.models;*/
     },
     inject:['goUserSeting'],
     computed: {
@@ -107,16 +62,11 @@
     -moz-background-size:100% 100%;
     overflow: hidden
   }
-  .user{
-    width: 100%;
-    height: 100%;
-    float: left;
-  }
   .head{
     position: relative;
     width: 100%;
-    height: 42%;
-    /*background: #0bd38a;*/
+    height: 250px;
+    background: #0bd38a;
   }
   .center{
     position: relative;

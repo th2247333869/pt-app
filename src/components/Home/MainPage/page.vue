@@ -10,7 +10,12 @@
     <div class="content-msg">
       <template v-for="item in contents">
         <div class="msg">
-          {{item.name}}
+          <div><h3>{{item.head}}</h3>
+          </div>
+          <div class="msg-text"><h3>{{item.mesg}}</h3></div>
+        </div>
+        <div class="msg-text-img">
+         <img src='./../../../../static/image/img2/yinghua.jpg'>
         </div>
       </template>
     </div>
@@ -23,19 +28,24 @@
       return {
         card:[
           {src:'./../../../static/image/img2/cat.jpg'},
-          {src:'./../../../static/image/img2/usa.jpg'},
-          {src:'./../../../static/image/img2/huoying.jpg'}
+          {src:'./../../../static/image/img2/jpan.jpg'},
+          {src:'./../../../static/image/img2/yinghua.jpg'}
         ],
-        contents:[
-          {name:'我的喵'},
-          {name:'我的喵'},
-          {name:'我的喵'},{name:'我的喵'},
-          {name:'我的喵'},
-          {name:'我的喵'},
-          {name:'我的喵'},
-          {name:'我的喵'},
-          {name:'我的喵'},
-        ]
+        contents:[]
+      }
+    },
+    created(){this.findRecommend()},
+    methods:{
+      findRecommend:function () {
+        let _this = this;
+        let url = _this.HOST;
+        _this.axios.post(url+'/getEveryRecommend')
+          .then(function (response) {
+            console.log(response.data)
+            _this.contents = response.data;
+          }).catch(function (error) {
+          console.log(error);
+        });
       }
     }
   }
@@ -81,8 +91,44 @@
     /*height: 500px;*/
   }
   .msg{
-    width: 100%;
+    float: left;
+    width: 65%;
+    height: 200px;
     border-bottom: 1px solid gray;
-    box-shadow: 1px 1px 1px #888888;
+    padding: 25px;
+    padding-right: 0px;
+  }
+  .msg h3{
+    font-size: 25px;
+    color: rgba(60, 58, 58, 0.85);
+    text-align: left;
+    display: inline-block;
+    letter-spacing:1px;
+    line-height:44px;
+  }
+  .msg-text-img{
+    float: left;
+    width: 35%;
+    height: 200px;
+    border-bottom: 1px solid gray;
+    padding: 25px;
+  }
+  .msg-text{
+    margin-top: 25px;
+  }
+  .msg-text-img img{
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+  }
+  .msg-text h3{
+    font-size: 15px;
+    color: rgba(179, 173, 173, 0.85);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    letter-spacing:1px;
+    line-height:24px;
   }
 </style>

@@ -1,23 +1,36 @@
 <template>
   <div id="userSeting">
+    <div class="return" @click="returnBack()">
+      <img src="./../../../static/image/img2/return1.png">
+    </div>
+    <div class="edit">
+      <img src="./../../../static/image/img2/open.png">
+    </div>
     <div class="head">
-      <div>
-        <p class="p1" :class="{active:shows==1}" @click="active()"><a>消息</a></p>
-        <p class="p2" :class="{active:shows==2}" @click="active()"><a>私信</a></p>
+      <div class="search">
+          <img src="./../../../static/image/img2/flash.jpg">
+          <input type="text" placeholder="请输入文字"/>
       </div>
     </div>
     <div class="message">
       <template v-for="a in items">
-        <div class="m">
-          <div class="am">
-            <h3><a>{{a.title}}</a></h3>
-            <h5>{{a.advertText}}</h5>
+        <template v-for="item in 8">
+          <div class="m">
+              <div class="um">
+                <img src="./../../../static/image/img2/flash.jpg">
+                <h4><a>{{a.advertiser}}</a></h4>
+                <div class="heart">
+                  <img src="./../../../static/image/img2/goreturn.png">
+                </div>
+              </div>
+              <div class="am">
+                《流浪地球》是由中国电影股份有限公司、北京京西文化旅游股份有限公司、
+                北京登峰国际文化传播有限公司、郭帆文化传媒（北京）有限公司出品的科幻片
+                ，由郭帆执导，吴京特别出演，屈楚萧、李光洁、吴孟达
+                、赵今麦领衔主演。该片于2019年2月5日（农历大年初一）在中国内地上映。
+              </div>
           </div>
-          <div class="um">
-            <img src="./../../../static/image/huge.jpg">
-            <h4><a>{{a.advertiser}}</a></h4>
-          </div>
-        </div>
+        </template>
       </template>
 
     </div>
@@ -57,6 +70,10 @@
           }).catch(function (error) {
           console.log(error);
         });
+      },
+      returnBack:function () {
+        let _this = this;
+        _this.$router.back(-1);
       }
     }
   }
@@ -67,16 +84,69 @@
     width: 100%;
     height: 100%;
   }
-  .head{
-    width: 100%;
-    height: 0.733333rem;
-    background: #ebebeb;
+  .return{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 45px;
+    height: 45px;
   }
-  .head div{
-    margin: 0px auto;
-    width: 30%;
+  .return img{
+    width: 100%;
     height: 100%;
   }
+  .edit{
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    width: 45px;
+    height: 55px;
+    color: gray;
+  }
+  .edit h4{
+    float: left;
+    font-size: 20px;
+  }
+  .edit img{
+      float: left;
+      width: 45px;
+      height: 40px;
+  }
+  .head{
+    width: 100%;
+    height: 250px;
+    background: rgb(243, 243, 243);
+  }
+  .search{
+    height: 35%;
+    position: relative;
+    top: 35%;
+  }
+  .search img{
+    width: 105px;
+    height: 105px;
+    border-radius:55px;
+    float: left;
+    border: 2px solid white;
+    margin-left: 25px;
+  }
+  .search input{
+    margin-top: 25px;
+    width: calc(100% - 255px);
+    height: 55px;
+    border-radius: 25px;
+    border: 3px solid #dddcdc;
+    -moz-box-shadow: 1px 1px 1px rgba(202, 197, 197, 0.33);
+    -webkit-box-shadow: 1px 1px 1px rgba(202, 197, 197, 0.33);
+    box-shadow:1px 1px 1px rgba(202, 197, 197, 0.33);
+    padding-left: 35px;
+  }
+  input::-webkit-input-placeholder {
+    /* placeholder颜色  */
+      color: gray;
+    /* placeholder字体大小  */
+     font-size: 18px;
+   }
   .head .p1 {
     height: 100%;
     float: left;
@@ -99,35 +169,63 @@
   }
   .message{
     width: 100%;
-    height: calc(100% - 55px);
+    height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
   }
   .m{
-    width: 100%;
-    height: 125px;
-    border-bottom: 1px solid;
-    background: rgba(27, 24, 24, 0.44);
-    filter:progid:DXImageTransform.Microsoft.Shadow(color=#909090,direction=120,strength=4);
-    -moz-box-shadow: 2px 2px 10px #909090;
-    -webkit-box-shadow: 2px 2px 10px #909090;
-    box-shadow:2px 2px 10px #909090;
-    margin-top: 5px;
+    width: 90%;
+    margin: 0px auto;
+    height: 280px;
+    border-bottom: 1px solid rgba(202, 197, 197,1);
+    padding: 35px;
   }
   .m img{
-    width: 55px;
-    height: 55px;
-    border-radius: 25px;
+    width: 85px;
+    height: 85px;
+    border-radius: 55px;
+    float: left;
   }
   .um{
     margin-top: 2%;
-    float: right;
+    float: left;
     margin-right: 15px;
+    width: 100%;
+    height: 100px;
+  }
+  .heart{
+    float: right;
+    width: 20%;
+    height: 100px;
+  }
+  .heart img{
+    width: 35%;
+    height: 35%;
+    float: right;
+  }
+  .um h4{
+    position: relative;top:15%;
+    float: left;
+    margin-left: 25px;
+  }
+  .um h4 a{
+    font-size: 25px;
+    color: black;
+    font-weight: bold;
   }
   .am {
-    width: 60%;
-    height: 100%;
+    width: 100%;
+    height: 70px;
     float: left;
+    text-align: left;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    line-height:24px;
+    color: #666666;
+    font-weight: bold;
   }
   .am h3{
     float: left;
@@ -136,4 +234,5 @@
     font-size: 35px;
     color: white;
   }
+
 </style>
