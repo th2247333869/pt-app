@@ -24,10 +24,7 @@
                 </div>
               </div>
               <div class="am">
-                《流浪地球》是由中国电影股份有限公司、北京京西文化旅游股份有限公司、
-                北京登峰国际文化传播有限公司、郭帆文化传媒（北京）有限公司出品的科幻片
-                ，由郭帆执导，吴京特别出演，屈楚萧、李光洁、吴孟达
-                、赵今麦领衔主演。该片于2019年2月5日（农历大年初一）在中国内地上映。
+                {{auth.substring(0,200)}}
               </div>
           </div>
         </template>
@@ -41,7 +38,11 @@
     data() {
       return {
         shows:1,
-        items:[]
+        items:[],
+        auth:"《流浪地球》是由中国电影股份有限公司、北京京西文化旅游股份有限公司、\n" +
+        "                北京登峰国际文化传播有限公司、郭帆文化传媒（北京）有限公司出品的科幻片\n" +
+        "                ，由郭帆执导，吴京特别出演，屈楚萧、李光洁、吴孟达\n" +
+        "                、赵今麦领衔主演。该片于2019年2月5日（农历大年初一）在中国内地上映。",
       }
     },
     created(){
@@ -88,19 +89,20 @@
     position: absolute;
     left: 15px;
     top: 15px;
-    width: 45px;
-    height: 45px;
+    width: 65px;
+    height: 65px;
   }
   .return img{
     width: 100%;
     height: 100%;
   }
   .edit{
+    display: none;
     position: absolute;
     right: 35px;
     top: 15px;
-    width: 45px;
-    height: 55px;
+    width: 65px;
+    height: 75px;
     color: gray;
   }
   .edit h4{
@@ -109,8 +111,8 @@
   }
   .edit img{
       float: left;
-      width: 45px;
-      height: 40px;
+      width: 65px;
+      height: 50px;
   }
   .head{
     width: 100%;
@@ -177,7 +179,7 @@
     width: 90%;
     margin: 0px auto;
     height: 280px;
-    border-bottom: 1px solid rgba(202, 197, 197,1);
+    border-bottom: 5px solid rgba(202, 197, 197,1);
     padding: 35px;
   }
   .m img{
@@ -221,8 +223,6 @@
     overflow:hidden;
     text-overflow:ellipsis;
     display:-webkit-box;
-    -webkit-box-orient:vertical;
-    -webkit-line-clamp:3;
     line-height:24px;
     color: #666666;
     font-weight: bold;

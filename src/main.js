@@ -5,8 +5,9 @@ import App from './App'
 import VueRouter from "vue-router"
 import 'lib-flexible/flexible.js'
 import 'lib-flexible'
+import Vuex from 'vuex'
 /****公共组件****************/
-
+import store from './vuex/index.js'
 //路由组件
 import routers  from './router.js'
 import axios from 'axios'
@@ -25,12 +26,13 @@ Vue.config.productionTip = false
 Vue.prototype.$router = VueRouter;
 Vue.prototype.axios=axios;
 Vue.prototype.HOST = '/api';
-//Vue.prototype.HOST = 'http://holer65530.wdom.net';
-//Vue.prototype.HOST = 'http://holer.org:65531'
+//Vue.prototype.HOST = 'http://39.105.89.63:8090/Blade-0.0.1-SNAPSHOT'
 
 Vue.use(VueRouter)
 Vue.use(MuseUI);
 Vue.use(ElementUI);
+Vue.use(Vuex)
+
 /*******局部变量路由********/
 const router = new VueRouter({
   routes: routers
@@ -40,6 +42,7 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   router: router,
+  store,
   render: h => h(App)
 }).$mount('#app')
 

@@ -56,6 +56,8 @@
 <style scoped>
 
   #UserSeting{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     height:100%;
     background: url("./../../../static/image/bgtest.png") no-repeat;
     width:100%;background-size:cover;

@@ -40,6 +40,8 @@
 </script>
 <style scoped>
   #Home{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     height:100%;
     background: url("./../../../static/image/bg4.jpg") no-repeat;
     width:100%;background-size:cover;

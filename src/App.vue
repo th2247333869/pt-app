@@ -47,7 +47,9 @@
 
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  font-family: 'Microsoft JhengHei';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -15,6 +15,12 @@
   </div>
 </template>
 <script>
+
+  import home from './../../../static/image/home.png';
+  import search from './../../../static/image/search.png';
+  import mg from './../../../static/image/mg.png';
+  import user from './../../../static/image/user.png';
+
   export  default {
     data:function () {
       return{
@@ -113,6 +119,8 @@
 <style scoped>
 
   #main{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     height:100%;
     background: url("./../../../static/image/bgtest-w.png") no-repeat;
     width:100%;background-size:cover;

@@ -52,6 +52,14 @@
   </div>
 </template>
 <script>
+
+  import store from '../../vuex'
+
+  import home from './../../../static/image/home.png';
+  import search from './../../../static/image/search.png';
+  import mg from './../../../static/image/mg.png';
+  import user from './../../../static/image/user.png';
+
   export  default {
     data() {
       return {
@@ -59,7 +67,7 @@
         main:'',
         tab:'',
         mark:'',
-        menus:[{url:""}],
+        menus:[],
         user:{
           name:'defult',
           uucode:'defult',
@@ -68,10 +76,10 @@
       }
     },
     inject:['goRout'],
-    created(){
+    mounted(){
       let _this = this;
-      _this.user = _this.$route.query.userinformation;
-      _this.menus = _this.$route.query.menus;
+      _this.user = store.state.userinformation;
+      _this.menus = store.state.menus;
     },
     methods:{
       /**
@@ -103,6 +111,8 @@
 </script>
 <style scoped>
   #main2{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     width: 100%;
     height: 100%;
     position: relative;

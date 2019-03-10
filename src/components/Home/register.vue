@@ -38,8 +38,7 @@
       register:function () {
         let _this = this;
         let url = this.HOST;
-        if(_this.identifyingCode.toUpperCase() == _this.identifyingCodeValue.toUpperCase()//忽略大小写
-                  && _this.identifyingCode!=''){
+        if(_this.identifyingCode == _this.identifyingCodeValue&& _this.identifyingCode!=''){
           alert("验证码正确");
           this.axios.post(url+'/register', {
             data:{
@@ -104,6 +103,8 @@
 </script>
 <style scoped>
   #Home{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     height:100%;
     background: url("./../../../static/image/bgtest.png") no-repeat;
     width:100%;background-size:cover;

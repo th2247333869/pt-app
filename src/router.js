@@ -9,6 +9,8 @@ import  main2 from './components/Home/main2.vue'
 //2.0ui 子页面切换
 import  page from './components/Home/MainPage/page.vue'
 import  Search from './components/routerPages/search.vue'
+import  content from './components/Home/MainPage/content.vue'
+import  contentTalk from './components/Home/MainPage/contentTalk.vue'
 
 let routes = [
   {
@@ -89,6 +91,22 @@ let routes = [
       requireAuth: true,
     },
     component:message
+  },
+  {//测试
+    name:'content',
+    path: '/content',
+    meta: {
+      requireAuth: true,
+    },
+    component:content
+  },
+  {//测试
+    name:'contentTalk',
+    path: '/contentTalk',
+    meta: {
+      requireAuth: true,
+    },
+    component:contentTalk
   },
 
 ]

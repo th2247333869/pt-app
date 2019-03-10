@@ -35,6 +35,8 @@
 </script>
 <style scoped>
   #Search{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     height:100%;
     width:100%;background-size:cover;
     -moz-background-size:100% 100%;

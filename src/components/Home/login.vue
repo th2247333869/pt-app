@@ -17,11 +17,10 @@
           <div class="clear"></div>
         </div>
     </div>
-    <div class="test"> V_19.2.16</div>
   </div>
 </template>
 <script>
-
+  import store from '../../vuex'
 
   export  default {
     data(){
@@ -45,8 +44,11 @@
           },
         })
           .then(function (response) {
-            console.log(response.data);
+
             if(response.data.code == "1"){//成功
+              store.commit("setUserInformation", response.data.result);
+              store.commit("setMenus", response.data.menus);
+              sessionStorage.setItem("uucode",response.data.uucode);
               _this.$router.push({
                 name:'main',
                 query:{
@@ -55,6 +57,7 @@
                   model:response.data.model,
                 }
               })
+
             }else{
               alert("请检查用户名或密码");
               //制空
@@ -78,6 +81,8 @@
 </script>
 <style scoped>
   #Home{
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
     height:100%;
     background: url("./../../../static/image/bgtest.png") no-repeat;
     width:100%;background-size:cover;
