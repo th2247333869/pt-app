@@ -25,8 +25,8 @@ import './assets/CSS/style.css'
 Vue.config.productionTip = false
 Vue.prototype.$router = VueRouter;
 Vue.prototype.axios=axios;
-Vue.prototype.HOST = '/api';
-//Vue.prototype.HOST = 'http://39.105.89.63:8090/Blade-0.0.1-SNAPSHOT'
+Vue.prototype.HOST = 'http://127.0.0.1:8088/';
+//Vue.prototype.HOST = 'http://39.105.89.63:8088/Blade-0.0.1-SNAPSHOT'
 
 Vue.use(VueRouter)
 Vue.use(MuseUI);

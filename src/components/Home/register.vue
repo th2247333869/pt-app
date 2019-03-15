@@ -6,12 +6,12 @@
       <div class="user"></div>
         <input type="text" class="text"  v-model="username" value="" placeholder="邮箱账号"  >
         <div>
-          <input type="text" value="" class="identifyingCode" v-model="identifyingCode" placeholder="验证码" >
+          <input type="text" value="" class="identifyingCode" v-model="identifyingCode" placeholder="序列码" >
           <button :class="sendidentifyingCode" @click="sendIdentifyingCode()" :disabled="isdisabledFn">{{sendidentifyingCodeText}}</button>
         </div>
         <input type="password" value=""  v-model="password" placeholder="密码" >
         <input type="password" value=""  v-model="rePassword" placeholder="确认密码" >
-        <div class="submit"><input type="submit" @click="register()" value="注册" ></div>
+        <div class="submit"><input type="submit" @click="reg2()" value="注册" ></div>
         <div class="clear"></div>
         <div class="fz"><h3><a @click="goto()">已有账号返回登录</a></h3></div>
     </div>
@@ -44,6 +44,7 @@
             data:{
               username:_this.username,
               password:_this.password,
+              identifyingCode:_this.identifyingCode,
             }
           })
             .then(function (response) {
@@ -63,6 +64,29 @@
           _this.identifyingCode = "";
         }
 
+      },
+      reg2:function () {
+        let _this = this;
+        let url = this.HOST;
+        this.axios.post(url+'/register', {
+          data:{
+            username:_this.username,
+            password:_this.password,
+            identifyingCode:_this.identifyingCode,
+          }
+        })
+          .then(function (response) {
+            if(response.data == "1"){
+              alert("注册成功");
+            }else if(response.data == "001"){
+              alert("邮箱重复");
+            }else{
+              alert("注册失败");
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       },
       sendIdentifyingCode:function () {
         let _this = this;

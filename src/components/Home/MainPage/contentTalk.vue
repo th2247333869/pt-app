@@ -13,9 +13,9 @@
       <div class="mesg">
         <div class="h">
           <img src="./../../../../static/image/huge.jpg">
-          {{item.head}}   ：写于{{item.createdate}}
+          {{item[3]}}   ：<label>写于{{item[7]}}</label>
         </div>
-        <div class="mesgcontent" style="text-indent: 2em;">{{item.mesg}}</div>
+        <div class="mesgcontent" style="text-indent: 2em;">{{item[2]}}</div>
         <div style="width: 100%;height: 15px;"></div>
       </div>
       <div class="fgx"></div>
@@ -24,8 +24,9 @@
         <div class="talk">
           <div class="h">
             <img src="./../../../../static/image/huge.jpg">
-            {{item[6]}}发表于：{{item[5]}}
+            {{item[6]}}<label>发表于：{{item[5]}}</label>
           </div>
+          <div style="width: 100%;height: 25px;"></div>
           <div class="talkmsg">评论：{{item[4]}}</div>
         </div>
       </template>
@@ -61,9 +62,10 @@
       showAllTalks(){
         let _this = this;
         let url = _this.HOST;
+        console.log(_this.item);
         _this.axios.post(url+'/getAllContentTalk',{
           data: {
-            midc:_this.item.id+"",
+            midc:_this.item[0]+"",
           },
         })
           .then(function (response) {
@@ -81,14 +83,14 @@
         let _this = this;
         let url = _this.HOST;
         let uucode = store.state.userinformation.uucode;
-        alert(_this.text);
         _this.axios.post(url+'/addContentTalk',{
           data: {
-            uucode:uucode,msg:_this.text,midc:_this.item.id+"",
+            uucode:uucode,msg:_this.text,midc:_this.item[0]+"",
           },
         })
           .then(function (response) {
             _this.showAllTalks();
+            _this.text = "";
           }).catch(function (error) {
 
         });
@@ -133,9 +135,9 @@
     position: absolute;
     width: 100%;
     height: 65px;
-    line-height: 65px;
+    line-height: 85px;
     color: #3a8ee6;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: bold;
   }
   .mesg{
@@ -238,5 +240,9 @@
     position: relative;
     top: 12px;
     left: 12px;
+  }
+  .h label{
+    font-size: 15px;
+    float: right;
   }
 </style>

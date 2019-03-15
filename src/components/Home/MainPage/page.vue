@@ -8,24 +8,25 @@
       </el-carousel>
     </div>
     <div class="content-msg">
-      <template v-for="item in contents">
+      <template v-for="(item,index) in contents">
         <div class="msg">
           <div class="h">
             <img src="./../../../../static/image/huge.jpg">
-            {{item.head}}
+            <label>{{item[3]}}</label>
+            <div class="close" @click="contents.splice(index, 1)"><img src="./../../../../static/image/img2/close.png"></div>
           </div>
-          <div class="msg-text">{{item.mesg.substring(0,132)}}...</div>
-          <div class="imgsdiv"><img class="imgs" src='./../../../../static/image/img2/yinghua.jpg'></div>
+          <div class="msg-text">{{item[2].substring(0,132)}}...</div>
+          <div class="imgsdiv" ><img class="imgs" v-if="item[4].length>2" :src="url+item[4]"></div>
           <div class="talk">
             <div class="pl" >
-              <div style="width: 20%; float: left;padding: 5px"><label>热门评论_</label></div>
+              <div class="lab" style=" font-size:30px;width: 25%; float: left;padding: 5px"><label >热门评论</label></div>
               <div class="zan" style="width: 50%; float: right;padding: 5px">
-                <p class="plip">{{item.fall}}</p>
-                <img class="plip" @click="addFall(item.id)" style="transform: rotateZ(180deg);" src="./../../../../static/image/img2/zanf.png">
-                <p class="plip">{{item.praise}}</p>
-                <img class="plip" @click="addPraise(item.id)" style="transform: rotateZ(360deg);"  src="./../../../../static/image/img2/zan.png">
+                <p class="plip">{{item[9]}}</p>
+                <img class="plip" @click="addFall(item[0])" style="transform: rotateZ(180deg);" src="./../../../../static/image/img2/zanf.png">
+                <p class="plip">{{item[8]}}</p>
+                <img class="plip" @click="addPraise(item[0])" style="transform: rotateZ(360deg);"  src="./../../../../static/image/img2/zan.png">
               </div>
-              <div class="firstalk" @click="showTalk(item)">不知道来吃了没！！</div>
+              <div class="firstalk" @click="showTalk(item)">{{item[10]}}</div>
             </div>
           </div>
         </div>
@@ -51,6 +52,7 @@
         contents:[],
         isPra:false,
         isFall:false,
+        url:this.HOST,
       }
     },
     created(){this.findRecommend()},
@@ -74,7 +76,10 @@
             item:item
           }})
       },
-      addFall:function (id) {
+      close:function () {
+
+      },
+      /*addFall:function (id) {
         let _this = this;
         let url = _this.HOST;
         if(!_this.isFall){
@@ -112,7 +117,7 @@
             console.log(error);
           });
         }
-      }
+      }*/
     }
   }
 
@@ -161,25 +166,32 @@
     position: relative;
     float: left;
     width: 100%;
-    border-bottom: 3px solid gray;
-    padding: 15px;
+    border-bottom: 20px solid rgb(231, 232, 233);
+    padding: 25px;
     padding-right: 0px;
     height:auto;
+    background: rgba(232, 233, 234, 0.22);
   }
   .msg .h{
     width: 100%;
     font-size: 25px;
-    color: rgba(60, 58, 58, 0.85);
+    color: #666666;
     text-align: left;
     display: inline-block;
     letter-spacing:2px;
     font-weight: bold;
   }
   .h img{
-    width: 55px;
-    height: 55px;
+    width: 75px;
+    height: 75px;
     border-radius: 50px;
     border: 3px solid gray;
+  }
+  .h label{
+    position: relative;
+    left: 15px;
+    top: -35px;
+    font-size: 25px;
   }
   .msg-text{
     margin-top: 25px;
@@ -198,12 +210,12 @@
     padding: 25px;
   }
   .msg-text {
-    font-size: 15px;
+    font-size: 30px;
     color: rgba(179, 173, 173, 0.85);
     overflow:hidden;
     text-overflow:ellipsis;
     display:-webkit-box;
-    color: #666666;
+    color: black;
     text-align: left;
   }
   .talk{
@@ -220,10 +232,26 @@
     float: left;
     text-align: left;
     padding: 25px;
+    font-size: 25px;
   }
   .zan img{
     width: 35px;
     height: 35px;
   }
   .plip{float: right;margin-left: 2px}
+
+  .lab label{
+    font-size:28px;
+  }
+  .close{
+    border: 0px solid;
+    float: right;
+    width: 45px;
+    height: 45px;
+  }
+  .close img{
+    width: 35px;
+    height: 35px;
+    border: 0px solid;
+  }
 </style>

@@ -11,7 +11,7 @@ import  page from './components/Home/MainPage/page.vue'
 import  Search from './components/routerPages/search.vue'
 import  content from './components/Home/MainPage/content.vue'
 import  contentTalk from './components/Home/MainPage/contentTalk.vue'
-
+import  kind from './components/Home/MainPage/kind.vue'
 let routes = [
   {
     path: '/',//父控制器--主页面
@@ -108,7 +108,14 @@ let routes = [
     },
     component:contentTalk
   },
-
+  {//测试
+    name:'kind',
+    path: '/kind',
+    meta: {
+      requireAuth: true,
+    },
+    component:kind
+  },
 ]
 
 
